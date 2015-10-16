@@ -1,4 +1,4 @@
-package org.gradle;
+package ch.bnntd.bfh.prgm.exc3;
 
 public class Main {
 
