@@ -16,8 +16,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -296,5 +298,38 @@ public class PersonDataProcessor {
 		return new TreeMap<Long, Person>();
 	}
 
+	/**
+	 * Writes the data of a TreeMap to a file with a defined name.
+	 * 
+	 */
+	public static void writeMapToFile(File file, Map<Long, Person> map) {
+
+	}
+
+	/**
+	 * Writes the data of a TreeSet to a file with a defined name.
+	 * 
+	 * @param persons
+	 */
+	public static void writeKeysToFile(TreeSet<Person> persons) {
+
+	}
+
+	/**
+	 * TreeSet<Person> writeNotUsedKeysToSet()
+	 * 
+	 * o Searches all keys (IDs) of the defined TreeMap that are not used.
+	 * 
+	 * o The search range can be defined with an initial and an end ID.
+	 * 
+	 * o Throws a NumberFormatException if the defined end ID isn't greater than
+	 * the defined initial ID.
+	 * 
+	 * @return
+	 */
+	public static TreeSet<Person> writeNotUsedKeysToSet() {
+
+		return new TreeSet<Person>();
+	}
 
 }
