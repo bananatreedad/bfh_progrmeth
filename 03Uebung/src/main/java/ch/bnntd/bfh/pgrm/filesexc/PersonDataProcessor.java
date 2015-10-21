@@ -24,6 +24,7 @@ import java.util.TreeSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ch.bananatreedad.jntimestopper.JNTimeStopper;
 import ch.bfh.modulBTX8051.Aufg14.base.Person;
 
 /**
@@ -270,7 +271,11 @@ public class PersonDataProcessor {
 			throws FileNotFoundException, EmptyFileException {
 
 		if (file.exists()) {
+
+			JNTimeStopper jnt = new JNTimeStopper();
+			jnt.start();
 			if (dataAnalyzer(file, null, null, null)) {
+				logger.debug("Analysing took " + jnt.stop() + "ms.");
 
 			}
 		} else
