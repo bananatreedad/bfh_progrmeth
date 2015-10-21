@@ -95,11 +95,15 @@ public class PersonDataProcessor {
 						if (checkLine(line, logFileWriter)) {
 							logger.debug("Line is valid.");
 							correctLines++;
-							outputFileWriter.println(line);
+							if (outputFileWriter != null) {
+								outputFileWriter.println(line);
+							}
 						} else {
 							logger.debug("Line is invalid.");
 							wrongLines++;
-							outputErrorFileWriter.println(line);
+							if (outputFileWriter != null) {
+								outputFileWriter.println(line);
+							}
 							returnValue = false;
 						}
 						processedLines++;
@@ -112,12 +116,12 @@ public class PersonDataProcessor {
 
 			if (logFileWriter != null) {
 				logFileWriter.println();
-				logFileWriter
-						.println("Data processing log:\n- Method processing the data:");
+				logFileWriter.println(
+						"Data processing log:\n- Method processing the data:");
 
 				// TODO ask for fastest way to get this name programmatically
-				logFileWriter
-						.println("ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
+				logFileWriter.println(
+						"ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
 				Date date = new Date();
 				SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
@@ -126,10 +130,10 @@ public class PersonDataProcessor {
 						+ " Time: " + timeFormat.format(date));
 				logFileWriter
 						.println("Input file name: " + inputFile.getName());
-				logFileWriter.println("Output file name: "
-						+ outputFile.getName());
-				logFileWriter.println("Output error file name: "
-						+ outputErrorFile.getName());
+				logFileWriter
+						.println("Output file name: " + outputFile.getName());
+				logFileWriter.println(
+						"Output error file name: " + outputErrorFile.getName());
 				logFileWriter.println("Logfile name: " + logFile.getName());
 				logFileWriter.println("Proccessed lines: " + processedLines);
 				logFileWriter.println("Wrong lines: " + wrongLines);
