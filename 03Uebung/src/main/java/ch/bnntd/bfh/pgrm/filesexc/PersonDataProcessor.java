@@ -32,7 +32,8 @@ import ch.bfh.modulBTX8051.Aufg14.base.Person;
  */
 public class PersonDataProcessor {
 
-	private static final Logger logger = LoggerFactory.getLogger(PersonDataProcessor.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(PersonDataProcessor.class);
 
 	/**
 	 * @param inputFile
@@ -58,8 +59,8 @@ public class PersonDataProcessor {
 	 * @throws IOException
 	 * 
 	 */
-	public static boolean dataAnalyzer(File inputFile, File outputFile, File outputErrorFile, File logFile)
-			throws EmptyFileException {
+	public static boolean dataAnalyzer(File inputFile, File outputFile,
+			File outputErrorFile, File logFile) throws EmptyFileException {
 
 		Scanner inputFileScanner = null;
 		PrintWriter outputFileWriter = null;
@@ -93,7 +94,8 @@ public class PersonDataProcessor {
 			if (inputFileScanner.hasNextLine()) {
 
 				if (logFileWriter != null)
-					logFileWriter.println("-- For summary scroll to end of file.\n");
+					logFileWriter
+							.println("-- For summary scroll to end of file.\n");
 
 				while (inputFileScanner.hasNextLine()) {
 					String line = inputFileScanner.nextLine();
@@ -101,11 +103,15 @@ public class PersonDataProcessor {
 						if (checkLine(line, logFileWriter)) {
 							logger.debug("Line is valid.");
 							correctLines++;
-							outputFileWriter.println(line);
+							if (outputFileWriter != null) {
+								outputFileWriter.println(line);
+							}
 						} else {
 							logger.debug("Line is invalid.");
 							wrongLines++;
-							outputErrorFileWriter.println(line);
+							if (outputFileWriter != null) {
+								outputFileWriter.println(line);
+							}
 							returnValue = false;
 						}
 						processedLines++;
@@ -118,18 +124,24 @@ public class PersonDataProcessor {
 
 			if (logFileWriter != null) {
 				logFileWriter.println();
-				logFileWriter.println("Data processing log:\n- Method processing the data:");
+				logFileWriter.println(
+						"Data processing log:\n- Method processing the data:");
 
 				// TODO ask for fastest way to get this name programmatically
-				logFileWriter.println("ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
+				logFileWriter.println(
+						"ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
 				Date date = new Date();
 				SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
-				logFileWriter.println("Date: " + dayFormat.format(date) + " Time: " + timeFormat.format(date));
-				logFileWriter.println("Input file name: " + inputFile.getName());
-				logFileWriter.println("Output file name: " + outputFile.getName());
-				logFileWriter.println("Output error file name: " + outputErrorFile.getName());
+				logFileWriter.println("Date: " + dayFormat.format(date)
+						+ " Time: " + timeFormat.format(date));
+				logFileWriter
+						.println("Input file name: " + inputFile.getName());
+				logFileWriter
+						.println("Output file name: " + outputFile.getName());
+				logFileWriter.println(
+						"Output error file name: " + outputErrorFile.getName());
 				logFileWriter.println("Logfile name: " + logFile.getName());
 				logFileWriter.println("Proccessed lines: " + processedLines);
 				logFileWriter.println("Wrong lines: " + wrongLines);
@@ -161,7 +173,8 @@ public class PersonDataProcessor {
 	 * @return true if line is ok, false if not
 	 * @throws IOException
 	 */
-	private static boolean checkLine(String line, PrintWriter logfileWriter) throws IOException {
+	private static boolean checkLine(String line, PrintWriter logfileWriter)
+			throws IOException {
 
 		boolean logToFile = false;
 		if (logfileWriter != null)
@@ -251,8 +264,17 @@ public class PersonDataProcessor {
 	 * loads the data into a TreeMap.
 	 * 
 	 * @return
+	 * @throws EmptyFileException
 	 */
-	public static TreeMap<Long, Person> buildMapFromFile() {
+	public static TreeMap<Long, Person> buildMapFromFile(File file)
+			throws FileNotFoundException, EmptyFileException {
+
+		if (file.exists()) {
+			if (dataAnalyzer(file, null, null, null)) {
+
+			}
+		} else
+			throw new FileNotFoundException();
 
 		return new TreeMap<Long, Person>();
 	}
@@ -293,7 +315,8 @@ public class PersonDataProcessor {
 	 *
 	 * @return the Map<Long, Persons> containing the searched Persons
 	 */
-	public static TreeMap<Long, Person> searchPersons() throws IllegalArgumentException {
+	public static TreeMap<Long, Person> searchPersons()
+			throws IllegalArgumentException {
 
 		return new TreeMap<Long, Person>();
 	}
