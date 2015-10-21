@@ -273,9 +273,12 @@ public class PersonDataProcessor {
 		if (file.exists()) {
 
 			JNTimeStopper jnt = new JNTimeStopper();
+
 			jnt.start();
-			if (dataAnalyzer(file, null, null, null)) {
-				logger.debug("Analysing took " + jnt.stop() + "ms.");
+			boolean isFileValid = dataAnalyzer(file, null, null, null);
+			logger.debug("Analysing took " + jnt.stop() + "ms.");
+
+			if (isFileValid) {
 
 			}
 		} else
