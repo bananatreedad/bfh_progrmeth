@@ -21,9 +21,9 @@ public class Patient extends Person {
 	 * @param anAddress
 	 *           The address of a patient.
 	 */
-	public Patient(String aFirstName, String aName, long aPin,
+	public Patient(String aFirstName, String aName, String aBirthyear, String aGender, long aPin,
 			Address anAddress) {
-		super(aFirstName, aName);
+		super(aFirstName, aName, aBirthyear, aGender);
 		pin = aPin;
 		address = anAddress;
 	}

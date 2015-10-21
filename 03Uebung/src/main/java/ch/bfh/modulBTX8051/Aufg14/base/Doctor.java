@@ -21,9 +21,10 @@ public class Doctor extends Person {
 	 * @param aPhone
 	 *           The phone number of a doctor.
 	 */
-	public Doctor(String aFirstName, String aName, String aTitle,
+	public Doctor(String aFirstName, String aName, String aBirthyear, String aGender, String aTitle,
 			String aPhone) {
-		super(aFirstName, aName);
+		super(aFirstName, aName, aBirthyear, aGender);
+
 		title = aTitle;
 		phone = aPhone;
 	}

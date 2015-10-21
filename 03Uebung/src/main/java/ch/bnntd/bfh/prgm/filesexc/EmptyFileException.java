@@ -1,4 +1,4 @@
-package ch.bnntd.bfh.pgrm.filesexc;
+package ch.bnntd.bfh.prgm.filesexc;
 
 import java.io.IOException;
 

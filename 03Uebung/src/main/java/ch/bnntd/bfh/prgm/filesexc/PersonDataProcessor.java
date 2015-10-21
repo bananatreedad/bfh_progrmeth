@@ -8,7 +8,7 @@
  * effizient verarbeitet werden können. 
  * 
  */
-package ch.bnntd.bfh.pgrm.filesexc;
+package ch.bnntd.bfh.prgm.filesexc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -272,19 +272,41 @@ public class PersonDataProcessor {
 
 		if (file.exists()) {
 
+			TreeMap<Long, Person> personMap = new TreeMap<Long, Person>();
+
 			JNTimeStopper jnt = new JNTimeStopper();
 
 			jnt.start();
 			boolean isFileValid = dataAnalyzer(file, null, null, null);
-			logger.debug("Analysing took " + jnt.stop() + "ms.");
+			logger.info("Analysing took " + jnt.stop() + "ms.");
 
 			if (isFileValid) {
+				Scanner scanner = new Scanner(file);
 
+				while (scanner.hasNextLine()) {
+					String line = scanner.nextLine();
+					String[] lineArr = line.split(";");
+
+					String gender;
+					if (lineArr[4].toUpperCase() == "M") {
+						gender = "Herr";
+					} else {
+						gender = "Frau";
+					}
+
+					Person person = new Person(lineArr[2], lineArr[1],
+							lineArr[3], gender);
+
+					personMap.put(Long.parseLong(lineArr[0]), person);
+				}
+
+				scanner.close();
 			}
+
+			return personMap;
+
 		} else
 			throw new FileNotFoundException();
-
-		return new TreeMap<Long, Person>();
 	}
 
 	/**

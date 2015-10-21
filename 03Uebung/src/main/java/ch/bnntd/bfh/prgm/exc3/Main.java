@@ -2,12 +2,14 @@ package ch.bnntd.bfh.prgm.exc3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.TreeMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import ch.bnntd.bfh.pgrm.filesexc.EmptyFileException;
-import ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessor;
+import ch.bfh.modulBTX8051.Aufg14.base.Person;
+import ch.bnntd.bfh.prgm.filesexc.EmptyFileException;
+import ch.bnntd.bfh.prgm.filesexc.PersonDataProcessor;
 
 public class Main {
 
@@ -20,12 +22,15 @@ public class Main {
 
 			logger.debug(file.getAbsolutePath());
 
-			PersonDataProcessor.buildMapFromFile(file);
+			TreeMap<Long, Person> treeMap = PersonDataProcessor
+					.buildMapFromFile(file);
+
+			System.out.println(treeMap.size());
+
 		} catch (FileNotFoundException e) {
 			logger.error("File not found.");
 		} catch (EmptyFileException e) {
 			logger.error("File was empty.");
 		}
-
 	}
 }
