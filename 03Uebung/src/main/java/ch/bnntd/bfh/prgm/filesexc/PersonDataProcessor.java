@@ -314,8 +314,8 @@ public class PersonDataProcessor {
 	 * 
 	 * @return Map<PID, Person> - the map with the ids
 	 */
-	public static TreeMap<Long, Person> mergeTwoMaps() {
-
+	public static TreeMap<Long, Person> mergeTwoMaps(TreeMap<Long, Person> map1, TreeMap<Long, Person> map2) {
+		
 		return new TreeMap<Long, Person>();
 	}
 
