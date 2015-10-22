@@ -15,6 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Map;
 import java.util.Scanner;
@@ -321,9 +324,15 @@ public class PersonDataProcessor {
 	 * 
 	 * @return the reversed map
 	 */
-	public static TreeMap<Long, Person> reverseTreeMap() {
+	public static TreeMap<Long, Person> reverseTreeMap(TreeMap<Long, Person> map) {
 
-		return new TreeMap<Long, Person>();
+		JNTimeStopper jnt = new JNTimeStopper();
+		jnt.start();
+		TreeMap<Long, Person> newMap = new TreeMap<Long, Person>(Collections.reverseOrder());
+		newMap.putAll(map);
+		logger.info("Reversing map took " + jnt.stop() + "ms.");
+
+		return newMap;
 	}
 
 	/**
