@@ -2,7 +2,10 @@ package ch.bnntd.bfh.prgm.exc3;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +22,20 @@ public class Main {
 
 		try {
 			File file = new File(Main.class.getResource("DataCSVmn.txt").getFile());
-
 			logger.debug(file.getAbsolutePath());
+			TreeMap<Long, Person> treeMap = PersonDataProcessor.buildMapFromFile(file);
 
-			TreeMap<Long, Person> treeMap = PersonDataProcessor
-					.buildMapFromFile(file);
+			File file2 = new File(Main.class.getResource("DataCSVwn.txt").getFile());
+			logger.debug(file2.getAbsolutePath());
+			TreeMap<Long, Person> treeMap2 = PersonDataProcessor.buildMapFromFile(file2);
+			
 
-			System.out.println(treeMap.size());
+			System.out.println("Men map size: " + treeMap.size());
+			System.out.println("Women map size: " + treeMap2.size());
+			
+			TreeMap<Long, Person> mergedMap = PersonDataProcessor.mergeTwoMaps(treeMap, treeMap2);
+			System.out.println("Merged map size: " + mergedMap.size());
+			
 
 		} catch (FileNotFoundException e) {
 			logger.error("File not found.");

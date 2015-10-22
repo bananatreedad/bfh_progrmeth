@@ -52,9 +52,27 @@ public class MapTester {
 		printMapWithKey(map);
 		System.out.println(jnt.stop());
 		System.out.println(printmap);
+		
+		//add a map to another map
+		TreeMap<String, String> map1 = new TreeMap<>();
+		fillMap(map1);
+
+		TreeMap<String, String> map2 = new TreeMap<>();
+		fillMapDifferent(map2);
+		
+		map1.putAll(map2);
+		printMap(map1);
 
 	}
 	
+	private static void fillMapDifferent(TreeMap<String, String> map2) {
+		map2.put("3000", "Phils");
+		map2.put("6000", "Aight");
+		map2.put("0000", "this");
+		map2.put("7000", "works");
+		map2.put("8000", ":D");	
+	}
+
 	public static void fillMap(Map<String, String> map) {
 		map.put("3000", "Phil");
 		map.put("5000", "Konrad");

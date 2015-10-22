@@ -33,8 +33,7 @@ import ch.bfh.modulBTX8051.Aufg14.base.Person;
  */
 public class PersonDataProcessor {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(PersonDataProcessor.class);
+	private static final Logger logger = LoggerFactory.getLogger(PersonDataProcessor.class);
 
 	/**
 	 * @param inputFile
@@ -60,8 +59,8 @@ public class PersonDataProcessor {
 	 * @throws IOException
 	 * 
 	 */
-	public static boolean dataAnalyzer(File inputFile, File outputFile,
-			File outputErrorFile, File logFile) throws EmptyFileException {
+	public static boolean dataAnalyzer(File inputFile, File outputFile, File outputErrorFile, File logFile)
+			throws EmptyFileException {
 
 		Scanner inputFileScanner = null;
 		PrintWriter outputFileWriter = null;
@@ -95,8 +94,7 @@ public class PersonDataProcessor {
 			if (inputFileScanner.hasNextLine()) {
 
 				if (logFileWriter != null)
-					logFileWriter
-							.println("-- For summary scroll to end of file.\n");
+					logFileWriter.println("-- For summary scroll to end of file.\n");
 
 				while (inputFileScanner.hasNextLine()) {
 					String line = inputFileScanner.nextLine();
@@ -125,24 +123,18 @@ public class PersonDataProcessor {
 
 			if (logFileWriter != null) {
 				logFileWriter.println();
-				logFileWriter.println(
-						"Data processing log:\n- Method processing the data:");
+				logFileWriter.println("Data processing log:\n- Method processing the data:");
 
 				// TODO ask for fastest way to get this name programmatically
-				logFileWriter.println(
-						"ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
+				logFileWriter.println("ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
 				Date date = new Date();
 				SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
-				logFileWriter.println("Date: " + dayFormat.format(date)
-						+ " Time: " + timeFormat.format(date));
-				logFileWriter
-						.println("Input file name: " + inputFile.getName());
-				logFileWriter
-						.println("Output file name: " + outputFile.getName());
-				logFileWriter.println(
-						"Output error file name: " + outputErrorFile.getName());
+				logFileWriter.println("Date: " + dayFormat.format(date) + " Time: " + timeFormat.format(date));
+				logFileWriter.println("Input file name: " + inputFile.getName());
+				logFileWriter.println("Output file name: " + outputFile.getName());
+				logFileWriter.println("Output error file name: " + outputErrorFile.getName());
 				logFileWriter.println("Logfile name: " + logFile.getName());
 				logFileWriter.println("Proccessed lines: " + processedLines);
 				logFileWriter.println("Wrong lines: " + wrongLines);
@@ -174,8 +166,7 @@ public class PersonDataProcessor {
 	 * @return true if line is ok, false if not
 	 * @throws IOException
 	 */
-	private static boolean checkLine(String line, PrintWriter logfileWriter)
-			throws IOException {
+	private static boolean checkLine(String line, PrintWriter logfileWriter) throws IOException {
 
 		boolean logToFile = false;
 		if (logfileWriter != null)
@@ -267,8 +258,7 @@ public class PersonDataProcessor {
 	 * @return
 	 * @throws EmptyFileException
 	 */
-	public static TreeMap<Long, Person> buildMapFromFile(File file)
-			throws FileNotFoundException, EmptyFileException {
+	public static TreeMap<Long, Person> buildMapFromFile(File file) throws FileNotFoundException, EmptyFileException {
 
 		if (file.exists()) {
 
@@ -294,8 +284,7 @@ public class PersonDataProcessor {
 						gender = "Frau";
 					}
 
-					Person person = new Person(lineArr[2], lineArr[1],
-							lineArr[3], gender);
+					Person person = new Person(lineArr[2], lineArr[1], lineArr[3], gender);
 
 					personMap.put(Long.parseLong(lineArr[0]), person);
 				}
@@ -315,8 +304,16 @@ public class PersonDataProcessor {
 	 * @return Map<PID, Person> - the map with the ids
 	 */
 	public static TreeMap<Long, Person> mergeTwoMaps(TreeMap<Long, Person> map1, TreeMap<Long, Person> map2) {
-		
-		return new TreeMap<Long, Person>();
+		JNTimeStopper timeStopper = new JNTimeStopper();
+
+		timeStopper.start();
+		TreeMap<Long, Person> newMap = new TreeMap<>();
+		newMap.putAll(map1);
+		newMap.putAll(map2);
+
+		logger.info("Merging took " + timeStopper.stop() + "ms.");
+
+		return newMap;
 	}
 
 	/**
@@ -345,8 +342,7 @@ public class PersonDataProcessor {
 	 *
 	 * @return the Map<Long, Persons> containing the searched Persons
 	 */
-	public static TreeMap<Long, Person> searchPersons()
-			throws IllegalArgumentException {
+	public static TreeMap<Long, Person> searchPersons() throws IllegalArgumentException {
 
 		return new TreeMap<Long, Person>();
 	}
