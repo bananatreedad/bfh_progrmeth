@@ -10,6 +10,8 @@ public class JNTimeStopper {
 	private long startTime = 0;
 	private long endTime = 0;
 
+	public JNTimeStopper(){}
+
 	public void start() {
 		if (startTime == 0) {
 			startTime = System.currentTimeMillis();

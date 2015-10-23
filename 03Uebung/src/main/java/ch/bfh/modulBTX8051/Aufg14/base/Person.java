@@ -3,7 +3,7 @@ package ch.bfh.modulBTX8051.Aufg14.base;
 /**
  * Represents a <code>Person</code> with the most important data.
  * 
- * @version V12.04.2015
+ * @author bananatreedad
  */
 public class Person implements Cloneable {
 	private String firstName;
@@ -23,7 +23,13 @@ public class Person implements Cloneable {
 		firstName = aFirstName;
 		name = aName;
 		birthyear = aBirthyear;
+		
+		if(aGender.matches("[mMwW]")) {
 		gender = aGender;
+		}
+		else {
+			throw new IllegalArgumentException("Valid values for gender: [mMwW].");
+		}
 	}
 
 	/**
@@ -90,14 +96,20 @@ public class Person implements Cloneable {
 		return name;
 	}
 
+	public String getBirthyear() {
+		return birthyear;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((birthyear == null) ? 0 : birthyear.hashCode());
-		result = prime * result
-				+ ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((birthyear == null) ? 0 : birthyear.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;

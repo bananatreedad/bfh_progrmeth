@@ -16,3 +16,6 @@ bin/
 .settings/
 
 test/
+
+#logs
+*.log

@@ -20,7 +20,7 @@ public class Main {
 
 		try {
 			File file = new File(Main.class.getResource("DataCSVmn.txt").getFile());
-			logger.debug(file.getAbsolutePath());
+
 			TreeMap<Long, Person> treeMap = PersonDataProcessor.buildMapFromFile(file);
 
 			File file2 = new File(Main.class.getResource("DataCSVwn.txt").getFile());
@@ -37,6 +37,22 @@ public class Main {
 
 			PersonDataProcessorUtil.printMap(reversedMergedMap);
 			// PersonDataProcessorUtil.printMapWithLamda(mergedMap);
+
+			TreeMap<Long, Person> heinigerMap = PersonDataProcessor.searchPersons("n", "heiniger",
+					mergedMap);
+			System.out.println("heinigerMap: " + heinigerMap.size());
+
+			TreeMap<Long, Person> y1992Map = PersonDataProcessor.searchPersons("y", "1992",
+					mergedMap);
+			System.out.println("y1992Map: " + y1992Map.size());
+
+			TreeMap<Long, Person> annaMap = PersonDataProcessor.searchPersons("f", "Anna",
+					mergedMap);
+			System.out.println("annaMap: " + annaMap.size());
+
+			TreeMap<Long, Person> maleMap = PersonDataProcessor.searchPersons("g", "m",
+					mergedMap);
+			System.out.println("maleMap: " + maleMap.size());
 
 		} catch (FileNotFoundException e) {
 			logger.error("File not found.");
