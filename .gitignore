@@ -19,3 +19,6 @@ test/
 
 #logs
 *.log
+
+#test-file
+test.txt

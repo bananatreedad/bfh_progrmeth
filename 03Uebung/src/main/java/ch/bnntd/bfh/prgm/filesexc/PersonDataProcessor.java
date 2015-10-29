@@ -12,19 +12,24 @@ package ch.bnntd.bfh.prgm.filesexc;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Consumer;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
+import org.apache.commons.collections.iterators.EntrySetMapIterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -63,8 +68,8 @@ public class PersonDataProcessor {
 	 * @throws IOException
 	 * 
 	 */
-	public static boolean dataAnalyzer(File inputFile, File outputFile, File outputErrorFile,
-			File logFile) throws EmptyFileException {
+	public static boolean dataAnalyzer(File inputFile, File outputFile, File outputErrorFile, File logFile)
+			throws EmptyFileException {
 
 		Scanner inputFileScanner = null;
 		PrintWriter outputFileWriter = null;
@@ -130,14 +135,12 @@ public class PersonDataProcessor {
 				logFileWriter.println("Data processing log:\n- Method processing the data:");
 
 				// TODO ask for fastest way to get this name programmatically
-				logFileWriter.println(
-						"ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
+				logFileWriter.println("ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
 				Date date = new Date();
 				SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
-				logFileWriter.println(
-						"Date: " + dayFormat.format(date) + " Time: " + timeFormat.format(date));
+				logFileWriter.println("Date: " + dayFormat.format(date) + " Time: " + timeFormat.format(date));
 				logFileWriter.println("Input file name: " + inputFile.getName());
 				logFileWriter.println("Output file name: " + outputFile.getName());
 				logFileWriter.println("Output error file name: " + outputErrorFile.getName());
@@ -264,8 +267,7 @@ public class PersonDataProcessor {
 	 * @return
 	 * @throws EmptyFileException
 	 */
-	public static TreeMap<Long, Person> buildMapFromFile(File file)
-			throws FileNotFoundException, EmptyFileException {
+	public static TreeMap<Long, Person> buildMapFromFile(File file) throws FileNotFoundException, EmptyFileException {
 
 		if (file.exists()) {
 
@@ -284,8 +286,7 @@ public class PersonDataProcessor {
 					String line = scanner.nextLine();
 					String[] lineArr = line.split(";");
 
-					Person person = new Person(lineArr[2], lineArr[1], lineArr[3],
-							lineArr[4].toUpperCase());
+					Person person = new Person(lineArr[2], lineArr[1], lineArr[3], lineArr[4].toUpperCase());
 
 					personMap.put(Long.parseLong(lineArr[0]), person);
 				}
@@ -304,8 +305,7 @@ public class PersonDataProcessor {
 	 * 
 	 * @return Map<PID, Person> - the map with the ids
 	 */
-	public static TreeMap<Long, Person> mergeTwoMaps(TreeMap<Long, Person> map1,
-			TreeMap<Long, Person> map2) {
+	public static TreeMap<Long, Person> mergeTwoMaps(TreeMap<Long, Person> map1, TreeMap<Long, Person> map2) {
 		JNTimeStopper timeStopper = new JNTimeStopper();
 
 		timeStopper.start();
@@ -355,8 +355,8 @@ public class PersonDataProcessor {
 	 *
 	 * @return the Map<Long, Persons> containing the searched Persons
 	 */
-	public static TreeMap<Long, Person> searchPersons(String option, String searchPattern,
-			TreeMap<Long, Person> map) throws IllegalArgumentException {
+	public static TreeMap<Long, Person> searchPersons(String option, String searchPattern, TreeMap<Long, Person> map)
+			throws IllegalArgumentException {
 
 		if (option.matches("[nfyg]")) {
 			Set<Entry<Long, Person>> personEntry = map.entrySet();
@@ -365,8 +365,7 @@ public class PersonDataProcessor {
 
 			switch (option) {
 			case "n":
-				stream = personEntry.stream()
-						.filter((e) -> e.getValue().getName().equalsIgnoreCase(searchPattern));
+				stream = personEntry.stream().filter((e) -> e.getValue().getName().equalsIgnoreCase(searchPattern));
 				break;
 			case "f":
 
@@ -381,8 +380,7 @@ public class PersonDataProcessor {
 
 			case "g":
 
-				stream = personEntry.stream()
-						.filter((e) -> e.getValue().getGender().equalsIgnoreCase(searchPattern));
+				stream = personEntry.stream().filter((e) -> e.getValue().getGender().equalsIgnoreCase(searchPattern));
 				break;
 
 			default:
@@ -400,8 +398,26 @@ public class PersonDataProcessor {
 	/**
 	 * Writes the data of a TreeMap to a file with a defined name.
 	 * 
+	 * @throws IOException
+	 * 
 	 */
-	public static void writeMapToFile(File file, Map<Long, Person> map) {
+	public static void writeMapToFile(File file, Map<Long, Person> map) throws IOException {
+		if (file.exists()) {
+			PrintWriter writer = new PrintWriter(file);
+
+			Set<Entry<Long, Person>> entrySet = map.entrySet();
+
+			for (Entry<Long, Person> entry : entrySet) {
+				writer.println(entry.getKey() + ";" + entry.getValue().getName() + ";" + entry.getValue().getFirstName()
+						+ ";" + entry.getValue().getBirthyear() + ";" + entry.getValue().getGender());
+			}
+			
+			logger.info(entrySet.size() + " lines written to " + file.getName());
+
+			writer.close();
+
+		} else
+			throw new FileNotFoundException();
 
 	}
 

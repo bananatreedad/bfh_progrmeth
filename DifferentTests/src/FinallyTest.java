@@ -32,7 +32,6 @@ public class FinallyTest {
 				in.close();
 			}
 		}
-
 	}
 
 	public void readData() throws IOException {
