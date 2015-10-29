@@ -58,6 +58,10 @@ public class Main {
 			File myFile = new File("test.txt");
 			myFile.createNewFile();
 			PersonDataProcessor.writeMapToFile(myFile, annaMap);
+			
+			File myKeyFile = new File("keystest.txt");
+			myKeyFile.createNewFile();
+			PersonDataProcessor.writeKeysToFile(myKeyFile, y1992Map);
 
 		} catch (FileNotFoundException e) {
 			logger.error("File not found.");

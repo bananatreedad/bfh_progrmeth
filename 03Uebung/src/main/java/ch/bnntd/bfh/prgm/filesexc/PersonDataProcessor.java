@@ -411,23 +411,32 @@ public class PersonDataProcessor {
 				writer.println(entry.getKey() + ";" + entry.getValue().getName() + ";" + entry.getValue().getFirstName()
 						+ ";" + entry.getValue().getBirthyear() + ";" + entry.getValue().getGender());
 			}
-			
+
 			logger.info(entrySet.size() + " lines written to " + file.getName());
 
 			writer.close();
 
 		} else
 			throw new FileNotFoundException();
-
 	}
 
 	/**
 	 * Writes the data of a TreeSet to a file with a defined name.
 	 * 
 	 * @param persons
+	 * @throws FileNotFoundException
 	 */
-	public static void writeKeysToFile(TreeSet<Person> persons) {
+	public static void writeKeysToFile(File file, TreeMap<Long, Person> persons) throws FileNotFoundException {
 
+		PrintWriter writer = new PrintWriter(file);
+
+		persons.keySet().forEach((p) -> {
+			writer.println(p.toString());
+		});
+
+		logger.info(persons.keySet().size() + " lines written to " + file.getName());
+
+		writer.close();
 	}
 
 	/**

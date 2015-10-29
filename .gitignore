@@ -21,4 +21,4 @@ test/
 *.log
 
 #test-file
-test.txt
+*test.txt
