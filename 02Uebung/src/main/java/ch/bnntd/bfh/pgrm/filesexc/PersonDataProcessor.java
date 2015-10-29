@@ -24,8 +24,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PersonDataProcessor {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(PersonDataProcessor.class);
+	private static final Logger logger = LoggerFactory.getLogger(PersonDataProcessor.class);
 
 	/**
 	 * @param inputFile
@@ -51,8 +50,8 @@ public class PersonDataProcessor {
 	 * @throws IOException
 	 * 
 	 */
-	public static boolean dataAnalyzer(File inputFile, File outputFile,
-			File outputErrorFile, File logFile) throws EmptyFileException {
+	public static boolean dataAnalyzer(File inputFile, File outputFile, File outputErrorFile, File logFile)
+			throws EmptyFileException {
 
 		Scanner inputFileScanner = null;
 		PrintWriter outputFileWriter = null;
@@ -86,8 +85,7 @@ public class PersonDataProcessor {
 			if (inputFileScanner.hasNextLine()) {
 
 				if (logFileWriter != null)
-					logFileWriter
-							.println("-- For summary scroll to end of file.\n");
+					logFileWriter.println("-- For summary scroll to end of file.\n");
 
 				while (inputFileScanner.hasNextLine()) {
 					String line = inputFileScanner.nextLine();
@@ -116,24 +114,18 @@ public class PersonDataProcessor {
 
 			if (logFileWriter != null) {
 				logFileWriter.println();
-				logFileWriter.println(
-						"Data processing log:\n- Method processing the data:");
+				logFileWriter.println("Data processing log:\n- Method processing the data:");
 
 				// TODO ask for fastest way to get this name programmatically
-				logFileWriter.println(
-						"ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
+				logFileWriter.println("ch.bnntd.bfh.pgrm.filesexc.PersonDataProcessorTest.testGetNameOfActualMethod()");
 				Date date = new Date();
 				SimpleDateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy");
 				SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 
-				logFileWriter.println("Date: " + dayFormat.format(date)
-						+ " Time: " + timeFormat.format(date));
-				logFileWriter
-						.println("Input file name: " + inputFile.getName());
-				logFileWriter
-						.println("Output file name: " + outputFile.getName());
-				logFileWriter.println(
-						"Output error file name: " + outputErrorFile.getName());
+				logFileWriter.println("Date: " + dayFormat.format(date) + " Time: " + timeFormat.format(date));
+				logFileWriter.println("Input file name: " + inputFile.getName());
+				logFileWriter.println("Output file name: " + outputFile.getName());
+				logFileWriter.println("Output error file name: " + outputErrorFile.getName());
 				logFileWriter.println("Logfile name: " + logFile.getName());
 				logFileWriter.println("Proccessed lines: " + processedLines);
 				logFileWriter.println("Wrong lines: " + wrongLines);
@@ -165,8 +157,7 @@ public class PersonDataProcessor {
 	 * @return true if line is ok, false if not
 	 * @throws IOException
 	 */
-	private static boolean checkLine(String line, PrintWriter logfileWriter)
-			throws IOException {
+	private static boolean checkLine(String line, PrintWriter logfileWriter) throws IOException {
 
 		boolean logToFile = false;
 		if (logfileWriter != null)
