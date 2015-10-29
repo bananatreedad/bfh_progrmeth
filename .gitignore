@@ -23,4 +23,8 @@ test/
 #test-file
 *test.txt
 
+<<<<<<< HEAD
 #anotherTest2
+=======
+#anotherTest
+>>>>>>> FETCH_HEAD
