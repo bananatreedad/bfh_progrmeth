@@ -3,6 +3,7 @@ package ch.bnntd.bfh.prgm.exc3;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.slf4j.Logger;
@@ -61,7 +62,13 @@ public class Main {
 			
 			File myKeyFile = new File("keystest.txt");
 			myKeyFile.createNewFile();
-			PersonDataProcessor.writeKeysToFile(myKeyFile, y1992Map);
+			PersonDataProcessor.writeKeysToFile(myKeyFile, y1992Map.keySet());
+			
+			Set<Long> keySet = PersonDataProcessor.writeNotUsedKeysToSet(maleMap);
+			
+			File myFreeKeyFile = new File("freekeystest.txt");
+			myFreeKeyFile.createNewFile();
+			PersonDataProcessor.writeKeysToFile(myFreeKeyFile, keySet);
 
 		} catch (FileNotFoundException e) {
 			logger.error("File not found.");

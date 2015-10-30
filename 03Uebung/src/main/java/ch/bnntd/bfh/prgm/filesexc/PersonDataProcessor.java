@@ -25,7 +25,6 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Stream;
 
-import org.apache.commons.collections.iterators.EntrySetMapIterator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -422,15 +421,15 @@ public class PersonDataProcessor {
 	 * @param persons
 	 * @throws FileNotFoundException
 	 */
-	public static void writeKeysToFile(File file, TreeMap<Long, Person> persons) throws FileNotFoundException {
+	public static void writeKeysToFile(File file, Set<Long> ids) throws FileNotFoundException {
 
 		PrintWriter writer = new PrintWriter(file);
 
-		persons.keySet().forEach((p) -> {
+		ids.forEach((p) -> {
 			writer.println(p.toString());
 		});
 
-		logger.info(persons.keySet().size() + " lines written to " + file.getName());
+		logger.info(ids.size() + " lines written to " + file.getName());
 
 		writer.close();
 	}
@@ -447,9 +446,20 @@ public class PersonDataProcessor {
 	 * 
 	 * @return
 	 */
-	public static TreeSet<Person> writeNotUsedKeysToSet() {
+	public static Set<Long> writeNotUsedKeysToSet(TreeMap<Long, Person> map) {
 
-		return new TreeSet<Person>();
+		Set<Long> keySet = map.keySet();
+		Set<Long> keySetNotUsed = new TreeSet<>();
+
+		Long max = Collections.max(keySet);
+		Long min = Collections.min(keySet);
+
+		for (long i = min + 1; i < max; i++) {
+			if (!keySet.contains(i))
+				keySetNotUsed.add(i);
+		}
+
+		return keySetNotUsed;
 	}
 
 }
