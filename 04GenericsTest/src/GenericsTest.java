@@ -5,7 +5,7 @@ public class GenericsTest {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Object> list = new ArrayList<>();
+		ArrayList list = new ArrayList<>();
 
 		list.add(1);
 		list.add("String");
@@ -14,5 +14,4 @@ public class GenericsTest {
 		int i = (int) list.get(0);
 		System.out.println(i);
 	}
-
 }

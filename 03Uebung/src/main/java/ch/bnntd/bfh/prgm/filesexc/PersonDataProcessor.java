@@ -304,8 +304,7 @@ public class PersonDataProcessor {
 		JNTimeStopper timeStopper = new JNTimeStopper();
 
 		timeStopper.start();
-		TreeMap<Long, Person> newMap = new TreeMap<>();
-		newMap.putAll(map1);
+		TreeMap<Long, Person> newMap = new TreeMap<>(map1);
 		newMap.putAll(map2);
 
 		logger.info("Merging took " + timeStopper.stop() + "ms.");
