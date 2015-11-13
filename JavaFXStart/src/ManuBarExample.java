@@ -15,7 +15,7 @@ public class ManuBarExample extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		MenuBar menuBar = new MenuBar();
-//		menuBar.setUseSystemMenuBar(true);
+		menuBar.setUseSystemMenuBar(true);
 		
 		Menu itemPic = new Menu("pics");
 
