@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,20 +20,18 @@ public class AddressExample extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		BorderPane pane = new BorderPane();
-		
-		VBox vBox = new VBox(3);
 
+		VBox vBox = new VBox(10);
 		Label adress = new Label("Address");
+
 		adress.setFont(Font.font(null, FontWeight.BOLD, -1));
 
 		vBox.getChildren().add(adress);
-		
+
 		GridPane grid = new GridPane();
-		
+
 		grid.setHgap(15);
 		grid.setVgap(3);
-
-		grid.setAlignment(Pos.CENTER);
 
 		Label name = new Label("Name");
 		GridPane.setConstraints(name, 0, 0);
@@ -69,9 +68,7 @@ public class AddressExample extends Application {
 		grid.getChildren().addAll(name, preName, street, plz, city, nameField, preNameField, streetField, plzField,
 				cityField);
 
-		
 		HBox buttonBox = new HBox(10);
-		buttonBox.setAlignment(Pos.CENTER_RIGHT);
 		Button okButton = new Button("OK");
 		okButton.setMinWidth(70);
 
@@ -79,17 +76,20 @@ public class AddressExample extends Application {
 		cancelButton.setMinWidth(70);
 
 		buttonBox.getChildren().addAll(okButton, cancelButton);
+		buttonBox.setAlignment(Pos.CENTER_RIGHT);
 
 		vBox.getChildren().addAll(grid, buttonBox);
-		
+
 		pane.setCenter(vBox);
 
+		BorderPane.setMargin(vBox, new Insets(10));
+		BorderPane.setAlignment(vBox, Pos.CENTER);
 
 		Scene scene = new Scene(pane);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Address");
 		primaryStage.show();
-		
+
 	}
 
 	public static void main(String[] args) {
