@@ -46,6 +46,7 @@ public class Stopwatch extends Stage implements Observer {
 
 		// Create GUI
 		BorderPane root = new BorderPane();
+		root.getStyleClass().add("background");
 
 		HBox labelBox = new HBox(3);
 		labelBox.setId("labelBox");

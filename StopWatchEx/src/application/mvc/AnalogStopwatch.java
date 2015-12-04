@@ -19,6 +19,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 	public AnalogStopwatch(TimerTeacher timer) {
 
 		BorderPane pane = new BorderPane();
+		pane.getStyleClass().add("background");
 		
 		this.timer = timer;
 		timer.addObserver(this);
@@ -29,6 +30,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		this.paint();
 		
 		final Scene scene = new Scene(pane);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		this.setTitle("Analog Stopwatch");
 		this.setScene(scene);
 		this.setX(520);
@@ -62,7 +64,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		int x = cx - (int) (Math.cos(Math.toRadians(h)) * 40);
 
 		g2.setStroke(new Color(0.7, 0, 0, 1));
-		g2.setStroke(Color.ORANGE);
+		g2.setStroke(Color.GREEN);
 		g2.setLineWidth(2f);
 		g2.strokeLine(cx, cy, x, y);
 
@@ -71,7 +73,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		y = cy - (int) (Math.sin(Math.toRadians(m)) * 60);
 		x = cx - (int) (Math.cos(Math.toRadians(m)) * 60);
 //		g2.setStroke(new Color(0.7, 0.7, 0, 1));
-		g2.setStroke(Color.ORANGE);
+		g2.setStroke(Color.LIGHTGREEN);
 		g2.setLineWidth(2f);
 		g2.strokeLine(cx, cy, x, y);
 
@@ -80,7 +82,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		y = cy - (int) (Math.sin(Math.toRadians(s)) * 70);
 		x = cx - (int) (Math.cos(Math.toRadians(s)) * 70);
 //		g2.setStroke(new Color(0, 0, 0, 1));
-		g2.setStroke(Color.RED);
+		g2.setStroke(Color.YELLOWGREEN);
 		g2.setLineWidth(1f);
 		g2.strokeLine(cx, cy, x, y);
 	}

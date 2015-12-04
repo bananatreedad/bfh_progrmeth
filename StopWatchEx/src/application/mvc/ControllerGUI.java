@@ -19,6 +19,7 @@ public class ControllerGUI extends Stage {
 		this.controller = controller;
 
 		BorderPane pane = new BorderPane();
+		pane.getStyleClass().add("background");
 
 		HBox box = new HBox();
 		pane.setCenter(box);
@@ -62,6 +63,8 @@ public class ControllerGUI extends Stage {
 		box.getChildren().addAll(startButton, stopButton, resetButton);
 
 		Scene scene = new Scene(pane);
+
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 		this.setScene(scene);
 		this.setTitle("ControllerGUI");

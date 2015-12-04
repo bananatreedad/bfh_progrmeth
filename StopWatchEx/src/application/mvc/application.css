@@ -1,6 +1,35 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+.background {
+	-fx-background-color: #FFFFFF;
+}
+
 #labelBox{
 	-fx-border-width: 2px; 
-	-fx-border-color: #000000;
+	-fx-border-color: rgb(34,125,212);
 } 
+
+.statusText.deactive {
+	-fx-fill: lightgreen;
+}
+
+.statusText.active {
+	-fx-fill: rgb(37,138,210);
+}
+
+.button {
+	-fx-background-color: rgb(37,138,210);
+	-fx-background-radius: 10;
+	-fx-border-style: solid;
+	-fx-border-width: 1px;
+	-fx-border-color: rgb(88,110,116);
+	-fx-border-radius: 10;
+}
+
+.button:hover {
+	-fx-background-color: lightgreen;	
+}
+
+.button:selected {
+	-fx-background-color: red;	
+}

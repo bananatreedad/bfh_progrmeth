@@ -21,14 +21,17 @@ public class StatusGUI extends Stage implements Observer {
 		timer.addObserver(this);
 		
 		BorderPane pane = new BorderPane();
+		pane.getStyleClass().add("background");
 		
 		pane.setPadding(new Insets(50));
 
 		pane.setCenter(statusText);
 		
 		statusText.setFont(new Font(60));
-		
+		statusText.getStyleClass().addAll("statusText", "deactive");
+
 		Scene scene = new Scene(pane);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 
 		this.setScene(scene);
 		this.setTitle("StatusGUI");
@@ -36,10 +39,27 @@ public class StatusGUI extends Stage implements Observer {
 		this.setY(500);
 		this.show();
 		
+		System.out.println(this.statusText.getStyleClass());
+		
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		this.statusText.setText(timer.isRunning() ? "Running!" : "Stopped.");
+		if(timer.isRunning()) {
+			this.statusText.setText("Running!");
+			if(this.statusText.getStyleClass().contains("deactive")) {
+				this.statusText.getStyleClass().remove("deactive");
+				this.statusText.getStyleClass().add("active");
+				System.out.println(this.statusText.getStyleClass());
+			}
+		}
+		else {
+			this.statusText.setText("Stopped.");
+			if(this.statusText.getStyleClass().contains("active")) {
+				this.statusText.getStyleClass().remove("active");
+				this.statusText.getStyleClass().add("deactive");
+				System.out.println(this.statusText.getStyleClass());
+			}
+		};
 	}
 }

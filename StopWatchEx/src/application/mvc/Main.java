@@ -7,6 +7,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
+		
 		TimerTeacher timer = new TimerTeacher(100);
 		Controller controller = new Controller(timer);
 
