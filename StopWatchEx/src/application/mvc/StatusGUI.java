@@ -50,7 +50,6 @@ public class StatusGUI extends Stage implements Observer {
 			if(this.statusText.getStyleClass().contains("deactive")) {
 				this.statusText.getStyleClass().remove("deactive");
 				this.statusText.getStyleClass().add("active");
-				System.out.println(this.statusText.getStyleClass());
 			}
 		}
 		else {
@@ -58,7 +57,6 @@ public class StatusGUI extends Stage implements Observer {
 			if(this.statusText.getStyleClass().contains("active")) {
 				this.statusText.getStyleClass().remove("active");
 				this.statusText.getStyleClass().add("deactive");
-				System.out.println(this.statusText.getStyleClass());
 			}
 		};
 	}

@@ -64,7 +64,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		int x = cx - (int) (Math.cos(Math.toRadians(h)) * 40);
 
 		g2.setStroke(new Color(0.7, 0, 0, 1));
-		g2.setStroke(Color.GREEN);
+		g2.setStroke(Color.rgb(37,138,210));
 		g2.setLineWidth(2f);
 		g2.strokeLine(cx, cy, x, y);
 
@@ -82,7 +82,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		y = cy - (int) (Math.sin(Math.toRadians(s)) * 70);
 		x = cx - (int) (Math.cos(Math.toRadians(s)) * 70);
 //		g2.setStroke(new Color(0, 0, 0, 1));
-		g2.setStroke(Color.YELLOWGREEN);
+		g2.setStroke(Color.rgb(37,138,210));
 		g2.setLineWidth(1f);
 		g2.strokeLine(cx, cy, x, y);
 	}

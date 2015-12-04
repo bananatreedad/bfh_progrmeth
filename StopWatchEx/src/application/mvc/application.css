@@ -10,11 +10,11 @@
 } 
 
 .statusText.deactive {
-	-fx-fill: lightgreen;
+	-fx-fill: rgb(37,138,210);
 }
 
 .statusText.active {
-	-fx-fill: rgb(37,138,210);
+	-fx-fill: lightgreen;
 }
 
 .button {
