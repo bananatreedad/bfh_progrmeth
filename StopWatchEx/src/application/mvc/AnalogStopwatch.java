@@ -31,7 +31,7 @@ public class AnalogStopwatch extends Stage implements Observer {
 		final Scene scene = new Scene(pane);
 		this.setTitle("Analog Stopwatch");
 		this.setScene(scene);
-		this.setX(600);
+		this.setX(520);
 		this.setY(200);
 		this.show();
 	}

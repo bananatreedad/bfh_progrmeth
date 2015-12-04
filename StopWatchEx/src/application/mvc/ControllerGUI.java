@@ -35,6 +35,8 @@ public class ControllerGUI extends Stage {
 		
 		this.setScene(scene);
 		this.setTitle("ControllerGUI");
+		this.setX(780);
+		this.setY(350);
 		this.show();
 	}
 	

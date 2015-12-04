@@ -13,6 +13,7 @@ public class Main extends Application {
 		new Stopwatch(timer, controller, 240, 240);
 		new AnalogStopwatch(timer);
 		new ControllerGUI(controller);
+		new StatusGUI(timer);
 	}
 
 	public static void main(String[] args) {
