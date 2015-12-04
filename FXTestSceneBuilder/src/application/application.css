@@ -1,0 +1,23 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#message {
+	-fx-font-weight: bold;
+	-fx-font-size: 20px;
+	-fx-fill: #900000;
+}
+
+.button {
+	-fx-background-color: linear-gradient(#ffffff, #aaaaaa);
+	-fx-background-radius: 100;
+	-fx-font-weight: bold;
+	-fx-font-size: 14px;
+	-fx-padding: 10px;
+}
+
+.button:hover {
+	-fx-background-color: red;	
+}
+
+.button:pressed {
+	-fx-background-color: linear-gradient(#ffd65b, #a68400);
+}
