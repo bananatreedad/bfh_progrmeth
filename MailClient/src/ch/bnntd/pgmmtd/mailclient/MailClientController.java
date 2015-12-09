@@ -28,6 +28,5 @@ public class MailClientController {
 
 		Mailer.send(tf_login.getText(), pf_password.getText(), tf_emailFrom.getText(),
 				tf_emailTo.getText(), tf_subject.getText(), ta_message.getText());
-
 	}
 }
