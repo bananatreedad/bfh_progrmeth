@@ -1,14 +1,13 @@
 
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
 	@Override
-	public void start(Stage primaryStage) throws IOException {
-		new DataEditorStage();
+	public void start(Stage primaryStage) {
+		new PieChartStage();
+		new XYChartStage();
 	}
 
 	public static void main(String[] args) {

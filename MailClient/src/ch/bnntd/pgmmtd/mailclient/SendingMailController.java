@@ -59,7 +59,6 @@ public class SendingMailController {
 					box.setAlignment(Pos.CENTER);
 					root.setBottom(box);
 
-
 					Label label = new Label();
 					label.setText(mailSuccess ? "Email sent." : "Not sent: " + errorMessage);
 

@@ -11,6 +11,7 @@ public class DataEditorStage extends Stage {
 		Parent parent = FXMLLoader.load(getClass().getResource("DataEditor.fxml"));
 
 		Scene scene = new Scene(parent);
+
 		this.setScene(scene);
 		this.setTitle("Model Editor");
 		this.show();

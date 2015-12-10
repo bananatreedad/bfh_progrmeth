@@ -4,6 +4,8 @@ import javafx.scene.control.TextField;
 
 public class DataEditorController {
 	
+	
+	
 	@FXML
 	private Button addButton;
 	
