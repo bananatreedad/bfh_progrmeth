@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bnntd.pgmmtd.mailclient.SendingMailController">
+   <center>
+      <BorderPane fx:id="root" BorderPane.alignment="CENTER">
+         <center>
+            <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0.0" BorderPane.alignment="CENTER" />
+         </center>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </BorderPane>
+   </center>
+</BorderPane>

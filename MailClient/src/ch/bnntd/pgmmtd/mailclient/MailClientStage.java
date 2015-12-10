@@ -11,6 +11,7 @@ public class MailClientStage extends Stage {
 
 	public MailClientStage() throws IOException {
 		
+		System.out.println(getClass().getResource("MailClient.fxml"));
 		Parent root = FXMLLoader.load(getClass().getResource("MailClient.fxml"));
 		
 		Scene scene = new Scene(root);
