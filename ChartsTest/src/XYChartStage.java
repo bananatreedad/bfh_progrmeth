@@ -27,7 +27,7 @@ public class XYChartStage extends Stage {
 		Thread thread = new Thread(() -> {
 			while (true) {
 				try {
-					Thread.sleep(100);
+					Thread.sleep(10);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

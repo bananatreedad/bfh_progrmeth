@@ -8,7 +8,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		new DataEditorStage();
+		
+		Model model = new Model();
+		new DataEditorStage(model);
 	}
 
 	public static void main(String[] args) {

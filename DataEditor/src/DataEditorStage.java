@@ -7,7 +7,12 @@ import javafx.stage.Stage;
 
 public class DataEditorStage extends Stage {
 
-	public DataEditorStage() throws IOException {
+	final Model model;
+
+	public DataEditorStage(Model model) throws IOException {
+	
+		this.model = model;
+		
 		Parent parent = FXMLLoader.load(getClass().getResource("DataEditor.fxml"));
 
 		Scene scene = new Scene(parent);
