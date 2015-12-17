@@ -20,7 +20,8 @@ public class DataEditorStage extends Stage {
 		loader.<DataEditorController>getController().init(model);
 
 		Scene scene = new Scene(parent);
-
+		this.setY(100);
+		this.setX(650);
 		this.setScene(scene);
 		this.setTitle("Model Editor");
 		this.show();
