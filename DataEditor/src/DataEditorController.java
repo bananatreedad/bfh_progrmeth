@@ -29,6 +29,12 @@ public class DataEditorController implements Observer {
 	@FXML
 	private TableView<Data> table;
 
+	@FXML
+	private TableColumn<Data, String> nameCol;
+	
+	@FXML
+	private TableColumn<Data, Integer> quantCol;
+
 	private ObservableList<Data> data;
 
 	private Model model;
@@ -51,13 +57,6 @@ public class DataEditorController implements Observer {
 			Data d = new Data(name, this.model.getQuantity(name));
 			this.data.add(d);
 		}
-
-		TableColumn<Data, String> nameCol = new TableColumn<>("Name");
-		TableColumn<Data, Integer> quantCol = new TableColumn<>("Quantity");
-		
-		this.table.getColumns().add(nameCol);
-		this.table.getColumns().add(quantCol);
-
 		
 		//bind the properties out of data to the certain columns 
 		//(the cell factory is responsible for building the cell)

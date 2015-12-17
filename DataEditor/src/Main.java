@@ -10,7 +10,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException {
 		
 		Model model = new Model();
+
 		new DataEditorStage(model);
+		new PieChartStage(model);
 	}
 
 	public static void main(String[] args) {
