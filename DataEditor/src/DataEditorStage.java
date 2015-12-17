@@ -13,7 +13,11 @@ public class DataEditorStage extends Stage {
 	
 		this.model = model;
 		
-		Parent parent = FXMLLoader.load(getClass().getResource("DataEditor.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("DataEditor.fxml"));
+		
+		Parent parent = loader.load();
+		
+		loader.<DataEditorController>getController().init(model);
 
 		Scene scene = new Scene(parent);
 

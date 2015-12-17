@@ -39,7 +39,7 @@ public class XYChartStage extends Stage {
 				});
 			}
 		});
-		
+
 		thread.setDaemon(true);
 
 		thread.start();
