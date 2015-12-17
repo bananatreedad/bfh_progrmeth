@@ -12,8 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
 public class DataEditorController implements Observer {
 
@@ -43,6 +46,7 @@ public class DataEditorController implements Observer {
 	private void initialize() {
 		//to right after GUI is up
 		this.data = FXCollections.observableArrayList();
+		this.table.setEditable(true);
 		table.setItems(this.data);
 	}
 
@@ -64,6 +68,14 @@ public class DataEditorController implements Observer {
 
 		//asObject is important! - http://code.makery.ch/library/javafx-8-tutorial/part2/
 		quantCol.setCellValueFactory(d -> d.getValue().quantityProperty().asObject());
+
+		//make cell editable and insert a String to IntegerConverter
+		quantCol.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+		quantCol.setOnEditCommit((CellEditEvent<Data, Integer> t) -> {
+			t.getRowValue().setQuantity(t.getNewValue());
+			//TODO do I have to go through all my elements now?
+		});
 	}
 
 	@FXML
