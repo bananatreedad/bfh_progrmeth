@@ -75,6 +75,12 @@ public class DataEditorController implements Observer {
 		quantCol.setOnEditCommit((CellEditEvent<Data, Integer> t) -> {
 			t.getRowValue().setQuantity(t.getNewValue());
 			//TODO do I have to go through all my elements now?
+			
+			model.setQuantity(t.getRowValue().getName(), t.getRowValue().getQuantity());
+			
+			for(Data d : data) {
+				System.out.println(d.name + ": " + d.getQuantity());
+			}
 		});
 	}
 
@@ -82,7 +88,7 @@ public class DataEditorController implements Observer {
 	private void addButtonOnAction() {
 		//THIS IS THE 'REAL' CONTROLLER ATM 
 		//adds something to the model
-		model.setQuantity(labelTextField.getText(), Integer.parseInt(valueTextField.getText()));
+		model.setQuantity(labelTextField.getText(), Integer.valueOf(valueTextField.getText()));
 
 		labelTextField.setText("");
 		valueTextField.setText("");
@@ -115,6 +121,8 @@ public class DataEditorController implements Observer {
 	}
 
 	//this object contains the data which are supposed to be displayed inside the table
+	//a static inner class has no access on the attributes on the parental class like a normal class
+	//the keyword static has an other meaning in this case!
 	private static class Data {
 		private final StringProperty name;
 		private final IntegerProperty quantity;

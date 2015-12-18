@@ -22,6 +22,7 @@ public class PieChartStage extends Stage {
 		this.setX(100);
 		this.setY(100);
 		
+		this.setTitle("Pie Chart");
 		this.setScene(scene);
 		this.show();
 

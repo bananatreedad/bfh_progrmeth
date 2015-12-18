@@ -13,6 +13,7 @@ public class Main extends Application {
 
 		new DataEditorStage(model);
 		new PieChartStage(model);
+		new XYChartStage(model);
 	}
 
 	public static void main(String[] args) {
