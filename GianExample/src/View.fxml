@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewController">
+   <center>
+      <Label text="Hello!" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <Button mnemonicParsing="false" onAction="#pressed_btn_new" text="open new" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
