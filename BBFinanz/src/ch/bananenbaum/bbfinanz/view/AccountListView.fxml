@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ch.bananenbaum.bbfinanz.view.AccountViewController">
+   <bottom>
+      <HBox nodeOrientation="RIGHT_TO_LEFT" spacing="10.0">
+         <children>
+            <Button fx:id="btn_add" mnemonicParsing="false" onAction="#pressed_btn_add" text="hinzufügen" />
+            <Button fx:id="btn_delete" mnemonicParsing="false" onAction="#pressed_btn_delete" text="löschen" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </BorderPane.margin>
+      </HBox>
+   </bottom>
+   <center>
+      <ListView fx:id="livi_accounts" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </BorderPane.margin>
+      </ListView>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="BBFinanz">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#pressed_mit_closeApp" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

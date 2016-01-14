@@ -1,6 +1,6 @@
 package ch.bananenbaum.bbfinanz;
 import ch.bananenbaum.bbfinanz.model.Model;
-import ch.bananenbaum.bbfinanz.view.AccountViewStage;
+import ch.bananenbaum.bbfinanz.view.AccountListViewStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -17,7 +17,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Model model = new Model();
 		
-		new AccountViewStage(model);
+		new AccountListViewStage(model);
 	}
 	
 	public static void main(String[] args) {

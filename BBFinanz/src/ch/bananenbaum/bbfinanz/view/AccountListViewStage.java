@@ -8,15 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AccountViewStage extends Stage {
+public class AccountListViewStage extends Stage {
 	
 	final Model model;
 	
-	public AccountViewStage(Model model) throws IOException {
+	public AccountListViewStage(Model model) throws IOException {
 		
 		this.model = model;
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountView.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountListView.fxml"));
 		
 		Parent parent = loader.load();
 		

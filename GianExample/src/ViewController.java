@@ -10,7 +10,6 @@ public class ViewController {
 	
 	
 	@FXML
-	
 	private void pressed_btn_new() throws IOException {
 		System.out.println("Test!");
 		new ViewStage();

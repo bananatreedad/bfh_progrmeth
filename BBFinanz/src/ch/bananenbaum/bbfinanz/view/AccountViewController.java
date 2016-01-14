@@ -1,5 +1,6 @@
 package ch.bananenbaum.bbfinanz.view;
 
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -43,8 +44,8 @@ public class AccountViewController implements Observer {
 	}
 	
 	@FXML
-	private void pressed_btn_add() {
-		model.addAccount("test");
+	private void pressed_btn_add() throws IOException {
+		new NewAccountStage(model);
 	}
 	
 	@FXML
