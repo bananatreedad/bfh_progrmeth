@@ -15,6 +15,11 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		OwnClock clock = new OwnClock(new Date(0));
 		
+		
 		ConsoleOwnClock consoleClock = new ConsoleOwnClock(clock);
+		
+		OwnClockStage stage = new OwnClockStage(clock);
+		Thread.sleep(1000);
+		clock.start();
 	}
 }

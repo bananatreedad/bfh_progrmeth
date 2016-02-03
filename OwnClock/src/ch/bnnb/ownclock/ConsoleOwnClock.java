@@ -20,6 +20,6 @@ public class ConsoleOwnClock implements Observer {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Stopped time: " + (long) arg / 1000);
+		System.out.println("Stopped time: " + (long) arg);
 	}
 }
